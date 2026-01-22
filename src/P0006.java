@@ -2,8 +2,9 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
 
-public class P0006 {
-    public static void main(String[] args) {
+public class P0006
+{
+	public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n;
         System.out.println("Enter number of array:");
@@ -13,7 +14,7 @@ public class P0006 {
         Random rd = new Random();
 
         for (int i=0; i<n; i++){
-            arr[i] = rd.nextInt(201)-100;
+            arr[i] = rd.nextInt(10);
         }
 
         System.out.println("Enter search value:");
@@ -21,25 +22,31 @@ public class P0006 {
 
         Arrays.sort(arr);
         System.out.print("Sorted array: [");
-        for (int x:arr) System.out.print(x + ", ");
-        System.out.println("]");
+        for (int i=0; i<n-1;i++) System.out.print(arr[i] + ", ");
+        System.out.println(arr[n-1] +"]");
 
         System.out.print("Found " +v + " at index: ");
 
         int mid=(n-1)/2, l=0,r=n-1;
-
+        int ch=1;
         while (l<=r) {
             if (arr[mid]==v) break;
-            if (v <= mid) {
+            if (v <= arr[mid]) {
                 r=mid;
-                mid=(r-l)/2;
+                mid=((r-l)/2)+l;
             }
             else{
-                v=mid;
-                mid=(r-l)/2;
+                l=mid;
+                mid=((r-l)/2)+l;
+            }
+            if (arr[mid]==v) break;
+
+            if(l==r && r==mid) {
+                System.out.print("Not found");
+                ch= 0;
+                break;
             }
         }
-        System.out.print(mid);
-        
-    }
+        if(ch==1) System.out.print(mid);
+        	}
 }
