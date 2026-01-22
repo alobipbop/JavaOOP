@@ -27,26 +27,14 @@ public class P0010
 
         System.out.print("Found " +v + " at index: ");
 
-        int mid=(n-1)/2, l=0,r=n-1;
-        int ch=1;
-        while (l<=r) {
-            if (arr[mid]==v) break;
-            if (v <= arr[mid]) {
-                r=mid;
-                mid=((r-l)/2)+l;
-            }
-            else{
-                l=mid;
-                mid=((r-l)/2)+l;
-            }
-            if (arr[mid]==v) break;
-
-            if(l==r && r==mid) {
-                System.out.print("Not found");
-                ch= 0;
+        int ch=0;
+        for (int i=0; i<n; i++){
+            if (arr[i] == v){
+                System.out.print(i);
+                ch=1;
                 break;
             }
         }
-        if(ch==1) System.out.print(mid);
+        if(ch==0) System.out.print("Not found");
         	}
 }
