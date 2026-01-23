@@ -14,7 +14,7 @@ public class P0006
         Random rd = new Random();
 
         for (int i=0; i<n; i++){
-            arr[i] = rd.nextInt(10);
+            arr[i] = rd.nextInt(n);
         }
 
         System.out.println("Enter search value:");
